@@ -64,33 +64,33 @@ export default function AddQuestions() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+        <h1 className="text-2xl font-bold text-slate-900 mb-6 tracking-tight">
           Manage Questions
         </h1>
 
         {/* Add Question Form */}
-        <div className="bg-white rounded-2xl shadow p-6 mb-8">
-          <h2 className="text-lg font-semibold text-gray-700 mb-4">
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_1px_3px_rgba(0,0,0,0.06),_0_6px_24px_rgba(99,102,241,0.10)] p-6 mb-8">
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Add New Question
           </h2>
 
           {error && (
-            <div className="bg-red-50 text-red-600 border border-red-200 rounded-lg px-4 py-3 mb-3 text-sm">
+            <div className="bg-rose-50 text-rose-700 border border-rose-200 rounded-xl px-4 py-3 mb-3 text-sm shadow-sm">
               {error}
             </div>
           )}
           {success && (
-            <div className="bg-green-50 text-green-600 border border-green-200 rounded-lg px-4 py-3 mb-3 text-sm">
+            <div className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl px-4 py-3 mb-3 text-sm shadow-sm">
               {success}
             </div>
           )}
 
           <form onSubmit={handleAdd} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-semibold text-slate-700 mb-1">
                 Question Text *
               </label>
               <textarea
@@ -99,7 +99,7 @@ export default function AddQuestions() {
                 onChange={handleChange}
                 required
                 rows={2}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full border border-slate-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-slate-900"
                 placeholder="Enter the question..."
               />
             </div>
@@ -107,7 +107,7 @@ export default function AddQuestions() {
             <div className="grid grid-cols-2 gap-4">
               {["A", "B", "C", "D"].map((opt) => (
                 <div key={opt}>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Option {opt} *
                   </label>
                   <input
@@ -116,7 +116,7 @@ export default function AddQuestions() {
                     value={form[`option${opt}`]}
                     onChange={handleChange}
                     required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full border border-slate-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-slate-900"
                     placeholder={`Option ${opt}`}
                   />
                 </div>
@@ -125,14 +125,14 @@ export default function AddQuestions() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Correct Answer *
                 </label>
                 <select
                   name="correctAnswer"
                   value={form.correctAnswer}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-slate-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-slate-900"
                 >
                   {["A", "B", "C", "D"].map((o) => (
                     <option key={o} value={o}>
@@ -142,7 +142,7 @@ export default function AddQuestions() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Marks *
                 </label>
                 <input
@@ -152,7 +152,7 @@ export default function AddQuestions() {
                   onChange={handleChange}
                   required
                   min={1}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-slate-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-slate-900"
                 />
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function AddQuestions() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50"
+              className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-6 py-2.5 rounded-lg font-semibold shadow-[0_2px_8px_rgba(79,70,229,0.28)] hover:-translate-y-px transition disabled:opacity-60"
             >
               {loading ? "Adding..." : "Add Question"}
             </button>
@@ -168,45 +168,52 @@ export default function AddQuestions() {
         </div>
 
         {/* Questions List */}
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">
+        <h2 className="text-lg font-semibold text-slate-900 mb-3">
           Questions ({questions.length})
         </h2>
         {questions.length === 0 ? (
-          <div className="bg-white rounded-xl shadow p-6 text-center text-gray-400">
+          <div className="bg-white rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.06),_0_6px_24px_rgba(99,102,241,0.10)] p-6 text-center text-slate-400">
             No questions added yet.
           </div>
         ) : (
           <div className="space-y-4">
             {questions.map((q, i) => (
-              <div key={q.id} className="bg-white rounded-xl shadow p-5">
-                <div className="flex items-start justify-between">
+              <div
+                key={q.id}
+                className="bg-white rounded-2xl border border-slate-100 shadow-[0_1px_3px_rgba(0,0,0,0.06),_0_6px_24px_rgba(99,102,241,0.10)] p-5"
+              >
+                <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <p className="font-medium text-gray-800">
-                      <span className="text-blue-600 font-bold mr-2">
+                    <p className="font-medium text-slate-900">
+                      <span className="text-indigo-600 font-bold mr-2">
                         Q{i + 1}.
                       </span>
                       {q.questionText}
-                      <span className="text-xs text-gray-400 ml-2">
+                      <span className="text-xs text-slate-400 ml-2">
                         ({q.marks} mark{q.marks > 1 ? "s" : ""})
                       </span>
                     </p>
-                    <div className="grid grid-cols-2 gap-1 mt-2 text-sm text-gray-600">
+                    <div className="grid grid-cols-2 gap-1 mt-2 text-sm text-slate-700">
                       {["A", "B", "C", "D"].map((opt) => (
                         <span
                           key={opt}
-                          className={`px-2 py-1 rounded ${q.correctAnswer === opt ? "bg-green-100 text-green-700 font-semibold" : ""}`}
+                          className={`px-2 py-1 rounded-lg ${
+                            q.correctAnswer === opt
+                              ? "bg-emerald-50 text-emerald-700 font-semibold border border-emerald-100"
+                              : "bg-slate-50 text-slate-700"
+                          }`}
                         >
                           {opt}. {q[`option${opt}`]}
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-green-600 font-medium mt-2">
+                    <p className="text-xs text-emerald-600 font-semibold mt-2">
                       ✅ Correct: Option {q.correctAnswer}
                     </p>
                   </div>
                   <button
                     onClick={() => handleDelete(q.id)}
-                    className="ml-4 text-xs bg-red-100 text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-200"
+                    className="ml-4 text-xs bg-rose-50 text-rose-600 px-3 py-1.5 rounded-lg border border-rose-100 hover:bg-rose-100"
                   >
                     Delete
                   </button>

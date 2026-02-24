@@ -30,24 +30,27 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-2">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-emerald-50 flex items-center justify-center px-4">
+      <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(99,102,241,0.12)] p-12 w-full max-w-md transition-all duration-150">
+        <div className="w-12 h-12 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center text-white text-2xl shadow-[0_10px_30px_rgba(79,70,229,0.35)]">
+          📝
+        </div>
+        <h2 className="text-3xl font-bold text-center text-slate-900 mb-2 tracking-tight">
           ExamPortal
         </h2>
-        <p className="text-center text-gray-500 mb-6">
+        <p className="text-center text-slate-500 mb-8">
           Sign in to your account
         </p>
 
         {error && (
-          <div className="bg-red-50 text-red-600 border border-red-200 rounded-lg px-4 py-3 mb-4 text-sm">
+          <div className="bg-rose-50 text-rose-600 border border-rose-200 rounded-xl px-4 py-3 mb-4 text-sm">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-slate-700">
               Email
             </label>
             <input
@@ -56,12 +59,12 @@ export default function Login() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 focus:bg-white transition"
               placeholder="you@example.com"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-slate-700">
               Password
             </label>
             <input
@@ -70,24 +73,24 @@ export default function Login() {
               value={form.password}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 focus:bg-white transition"
               placeholder="••••••••"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-bold py-3 rounded-xl shadow-[0_4px_14px_rgba(79,70,229,0.35)] hover:-translate-y-px transition-all disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-slate-500 mt-8">
           Don&apos;t have an account?{" "}
           <Link
             to="/register"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-indigo-600 hover:underline font-semibold"
           >
             Register
           </Link>

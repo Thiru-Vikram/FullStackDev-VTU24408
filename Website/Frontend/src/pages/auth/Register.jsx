@@ -34,29 +34,32 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-2">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-emerald-50 flex items-center justify-center px-4">
+      <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(99,102,241,0.12)] p-12 w-full max-w-md transition-all duration-150">
+        <div className="w-12 h-12 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center text-white text-2xl shadow-[0_10px_30px_rgba(79,70,229,0.35)]">
+          📝
+        </div>
+        <h2 className="text-3xl font-bold text-center text-slate-900 mb-2 tracking-tight">
           ExamPortal
         </h2>
-        <p className="text-center text-gray-500 mb-6">
+        <p className="text-center text-slate-500 mb-8">
           Create a student account
         </p>
 
         {error && (
-          <div className="bg-red-50 text-red-600 border border-red-200 rounded-lg px-4 py-3 mb-4 text-sm">
+          <div className="bg-rose-50 text-rose-600 border border-rose-200 rounded-xl px-4 py-3 mb-4 text-sm">
             {error}
           </div>
         )}
         {success && (
-          <div className="bg-green-50 text-green-600 border border-green-200 rounded-lg px-4 py-3 mb-4 text-sm">
+          <div className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl px-4 py-3 mb-4 text-sm">
             {success}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-slate-700">
               Full Name
             </label>
             <input
@@ -65,12 +68,12 @@ export default function Register() {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 focus:bg-white transition"
               placeholder="John Doe"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-slate-700">
               Email
             </label>
             <input
@@ -79,12 +82,12 @@ export default function Register() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 focus:bg-white transition"
               placeholder="you@example.com"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-slate-700">
               Password
             </label>
             <input
@@ -94,24 +97,24 @@ export default function Register() {
               onChange={handleChange}
               required
               minLength={6}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 focus:bg-white transition"
               placeholder="Min 6 characters"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-bold py-3 rounded-xl shadow-[0_4px_14px_rgba(79,70,229,0.35)] hover:-translate-y-px transition-all disabled:opacity-50"
           >
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-slate-500 mt-8">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-indigo-600 hover:underline font-semibold"
           >
             Sign In
           </Link>
