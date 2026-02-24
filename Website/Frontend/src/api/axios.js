@@ -19,6 +19,9 @@ api.interceptors.response.use(
     if (err.response?.status === 401) {
       localStorage.clear();
       window.location.href = '/login';
+      // Return a never-resolving promise so downstream .catch() handlers
+      // don't try to setState after we've already navigated away.
+      return new Promise(() => {});
     }
     return Promise.reject(err);
   }

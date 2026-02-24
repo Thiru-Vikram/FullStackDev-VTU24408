@@ -7,12 +7,14 @@ import com.example.demo.repository.ExamRepository;
 import com.example.demo.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class QuestionService {
 
     private final QuestionRepository questionRepository;

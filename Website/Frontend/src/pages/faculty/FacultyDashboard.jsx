@@ -4,21 +4,16 @@ import { useAuth } from "../../context/AuthContext";
 import { getMyExams } from "../../api/facultyService";
 import Navbar from "../../components/Navbar";
 
-const MOCK_EXAMS = [
-  { id: 1, title: "Data Structures & Algorithms", duration: 60, totalMarks: 100, questionCount: 20 },
-  { id: 2, title: "Operating Systems", duration: 45, totalMarks: 50, questionCount: 10 },
-  { id: 3, title: "Database Management Systems", duration: 90, totalMarks: 100, questionCount: 25 },
-];
-
 export default function FacultyDashboard() {
   const { user } = useAuth();
-  const [exams, setExams] = useState(MOCK_EXAMS);
-  const [loading, setLoading] = useState(false);
+  const [exams, setExams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getMyExams()
-      .then((res) => setExams(res.data || MOCK_EXAMS))
-      .catch(() => { /* keep mock defaults */ })
+      .then((res) => setExams(res.data || []))
+      .catch(() => setError("Failed to load exams. Please try again."))
       .finally(() => setLoading(false));
   }, []);
 
@@ -33,6 +28,8 @@ export default function FacultyDashboard() {
 
         {loading ? (
           <p className="text-gray-400">Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
         ) : (
           <>
             {/* Stats */}

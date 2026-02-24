@@ -4,32 +4,21 @@ import { useAuth } from "../../context/AuthContext";
 import { getAllExams, getMyResults } from "../../api/studentService";
 import Navbar from "../../components/Navbar";
 
-const MOCK_EXAMS = [
-  { id: 1, title: "Data Structures & Algorithms", duration: 60, totalMarks: 100 },
-  { id: 2, title: "Operating Systems", duration: 45, totalMarks: 50 },
-  { id: 3, title: "Database Management Systems", duration: 90, totalMarks: 100 },
-];
-
-const MOCK_RESULTS = [
-  { attemptId: 1, examTitle: "Data Structures & Algorithms", score: 82, totalMarks: 100, percentage: 82, status: "PASS" },
-  { attemptId: 2, examTitle: "Operating Systems", score: 36, totalMarks: 50, percentage: 72, status: "PASS" },
-  { attemptId: 3, examTitle: "Computer Networks", score: 20, totalMarks: 50, percentage: 40, status: "FAIL" },
-];
-
 export default function StudentDashboard() {
   const { user } = useAuth();
-  const [exams, setExams] = useState(MOCK_EXAMS);
-  const [results, setResults] = useState(MOCK_RESULTS);
-  const [loading, setLoading] = useState(false);
+  const [exams, setExams] = useState([]);
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setLoading(true);
     Promise.all([getAllExams(), getMyResults()])
       .then(([examsRes, resultsRes]) => {
-        setExams(examsRes.data || MOCK_EXAMS);
-        setResults(resultsRes.data || MOCK_RESULTS);
+        setExams(examsRes.data || []);
+        setResults(resultsRes.data || []);
       })
-      .catch(() => { /* keep mock defaults */ })
+      .catch(() => setError("Failed to load dashboard data. Please try again."))
       .finally(() => setLoading(false));
   }, []);
 
@@ -47,6 +36,8 @@ export default function StudentDashboard() {
 
         {loading ? (
           <p className="text-gray-400">Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
         ) : (
           <>
             {/* Stats */}
