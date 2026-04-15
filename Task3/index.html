@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="loginContainer">
         <div class="login-box">
             <div class="login-header">
                 <div class="icon">🔐</div>
@@ -88,6 +88,14 @@
                     <strong>Student:</strong> alice.j@university.edu / Alice@2024
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container" id="dashboard" style="display: none;">
+        <div class="login-box">
+            <h1 id="dashboardTitle"></h1>
+            <p>Welcome to your dashboard.</p>
+            <button id="logoutBtn" class="btn-login">Logout</button>
         </div>
     </div>
 

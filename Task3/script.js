@@ -208,11 +208,23 @@ loginForm.addEventListener('submit', async function(e) {
             localStorage.setItem('rememberedEmail', email);
         }
 
-        // Redirect after 2 seconds (simulate)
-        setTimeout(() => {
-            showAlert(`🚀 Redirecting to ${user.role} dashboard...`, 'success');
-            // In real app: window.location.href = '/dashboard';
-        }, 2000);
+        // In a real app, you would redirect to a new page:
+        // window.location.href = `/${user.role}-dashboard.html`;
+
+        // For this demo, we'll just show the dashboard view
+        document.getElementById('loginContainer').style.display = 'none';
+        const dashboard = document.getElementById('dashboard');
+        const dashboardTitle = document.getElementById('dashboardTitle');
+        
+        dashboardTitle.textContent = `${user.role.charAt(0).toUpperCase() + user.role.slice(1)} Page`;
+        dashboard.style.display = 'block';
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            dashboard.style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+            passwordInput.value = '';
+            closeAlert();
+        });
     } else {
         // Failure
         showAlert('❌ Invalid email or password. Please try again.', 'error');
